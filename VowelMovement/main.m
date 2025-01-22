@@ -20,9 +20,7 @@ int main(int argc, const char * argv[]) {
         
         NSLog(@"original strings: %@", originalStrings);
         
-        void (^devowelizer)(id, NSUInteger, BOOL *);
-        
-        devowelizer = ^(id string, NSUInteger i, BOOL *stop) {
+        void (^devowelizer)(id, NSUInteger, BOOL *) = ^(id string, NSUInteger i, BOOL *stop) {
             NSMutableString *newString = [NSMutableString stringWithString:string];
             
             for (NSString *s in vowels) {
