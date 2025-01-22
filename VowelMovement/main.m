@@ -21,6 +21,20 @@ int main(int argc, const char * argv[]) {
         NSLog(@"original strings: %@", originalStrings);
         
         void (^devowelizer)(id, NSUInteger, BOOL *);
+        
+        devowelizer = ^(id string, NSUInteger i, BOOL *stop) {
+            NSMutableString *newString = [NSMutableString stringWithString:string];
+            
+            for (NSString *s in vowels) {
+                NSRange fullRange = NSMakeRange(0, [newString length]);
+                [newString replaceOccurrencesOfString:s
+                                           withString:@""
+                                              options:NSCaseInsensitiveSearch
+                                                range:fullRange];
+            }
+            
+            [devowelizedStrings addObject:newString];
+        };
     }
     return 0;
 }
