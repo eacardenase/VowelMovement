@@ -21,6 +21,14 @@ int main(int argc, const char * argv[]) {
         NSLog(@"original strings: %@", originalStrings);
         
         void (^devowelizer)(id, NSUInteger, BOOL *) = ^(id string, NSUInteger i, BOOL *stop) {
+            NSRange yRange = [string rangeOfString:@"y"
+                                           options:NSCaseInsensitiveSearch];
+            
+            if (yRange.location != NSNotFound) {
+                *stop = YES; // prevents further iterations
+                return; // ends current iteration
+            }
+            
             NSMutableString *newString = [NSMutableString stringWithString:string];
             
             for (NSString *s in vowels) {
