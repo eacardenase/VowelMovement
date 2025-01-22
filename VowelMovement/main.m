@@ -33,6 +33,10 @@ int main(int argc, const char * argv[]) {
             
             [devowelizedStrings addObject:newString];
         };
+        
+        [originalStrings enumerateObjectsUsingBlock:devowelizer];
+        
+        NSLog(@"devowelized strings: %@", devowelizedStrings);
     }
     return 0;
 }
