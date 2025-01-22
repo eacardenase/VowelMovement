@@ -9,8 +9,18 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        NSArray *vowels = @[@"a", @"e", @"i", @"o", @"u"];
+        NSArray *originalStrings = @[
+            @"Sauerkraut",
+            @"Raygun",
+            @"Big Nerd Ranch",
+            @"Mississippi"
+        ];
+        NSMutableArray *devowelizedStrings = [NSMutableArray array];
+        
+        NSLog(@"original strings: %@", originalStrings);
+        
+        void (^devowelizer)(id, NSUInteger, BOOL *);
     }
     return 0;
 }
