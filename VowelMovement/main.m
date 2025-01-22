@@ -7,8 +7,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^ArrayEnumerationBlock)(id, NSUInteger, BOOL *);
-
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         NSArray *vowels = @[@"a", @"e", @"i", @"o", @"u"];
@@ -22,7 +20,7 @@ int main(int argc, const char * argv[]) {
         
         NSLog(@"original strings: %@", originalStrings);
         
-        ArrayEnumerationBlock devowelizer = ^(id string, NSUInteger i, BOOL *stop) {
+        [originalStrings enumerateObjectsUsingBlock:^(id string, NSUInteger i, BOOL *stop) {
             NSRange yRange = [string rangeOfString:@"y"
                                            options:NSCaseInsensitiveSearch];
             
@@ -42,9 +40,7 @@ int main(int argc, const char * argv[]) {
             }
             
             [devowelizedStrings addObject:newString];
-        };
-        
-        [originalStrings enumerateObjectsUsingBlock:devowelizer];
+        }];
         
         NSLog(@"devowelized strings: %@", devowelizedStrings);
     }
